@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'registration.css' %}"> {% endcomment %} -->
+    <style>
+    body{
+        /* {% comment %} background: url({%static 'img\bg.jpg'%}); {% endcomment %} */
+        background-size: cover;
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        text-align:center;
+        background-color:#E4C1EC;
+    }
+    
+    h1 {
+        text-align: center;
+        color: rgba(255, 0, 0, 0.668);
+        font-size: 50px;
+        padding: 20px;
+        margin: 0;
+        height: 30px;
+        margin-top:30px;
+        /* color:#593062; */
+        margin-left:13px;
+    }
+    
+    form{
+        align-items: center;
+        border-radius:20px;
+        border:2px solid #593062;
+        width:800px;
+        height:700px;
+        margin-left:10px;
+        /* background-color:#C798D2; */
+        box-shadow:0 0 10px #595959,
+                   0 0 20px #595959;
+        margin-top:50px;
+        }
+    
+    input, select {
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-top:20px;
+        margin-right:10px;
+    }
+    
+    input[type="submit"] {
+        background-color: #4caf50;
+        cursor: pointer;
+        height: 50px;
+        width: 70px;
+    }
+    
+    input[type="text"]{
+        width: 400px;
+    }
+    
+    input[type="email"]{
+        width: 400px;
+    }
+    
+    input[type="password"]{
+        width: 400px;
+    }
+    
+    input[type="tel"]{
+        width: 400px;
+    }
+    
+    input[type="file"]{
+        width: 400px;
+        background-color: white;
+    }
+    
+    label{
+        align-items: left;
+    }
+</style>
+</head>
+<body bgcolor="skyblue">
+        <center>
+        <h1><b>Registration Here</b></h1>
+        <form  method="POST" class="col-6 mx-auto card p-3 shadow-lg" action="{% url 'registrationE' %}"  enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if messages %}
+                {% for message in messages %}  
+                    <strong>{{ message }}</strong>
+                {% endfor %}
+            {% endif %}
+            <br>
+            <table border="0px">
+            <label for="Name"><b>Name:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="Name" name="username" placeholder="Enter Name" required>
+
+            <br><br><label for="email"><b>Email ID:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="email" id="email" name="email" placeholder="Enter Email ID" required>
+
+            <br><br><label for="password"><b>Password:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+            <br><br><label for="confirmPassword"><b>Confirm Password:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="password" id="confirmPassword" name="c_pwd" placeholder="Enter Confirm Password" required>
+
+            <br><br><label for="phone"><b>Phone No:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="tel" id="phone" name="phone_no" placeholder="Enter Phone No" required>
+
+            <br><br><label for="personalDocument"><b>Personal Document:</b></label>&nbsp;&nbsp;&nbsp;
+            <input type="file" id="personalDocument" name="p_document" required>
+        </table>
+        <br><input type="checkbox" value="remeber me?"/><b>I agree to the terms & conditions</b><br>
+        <br>    
+        <tr>
+                <!-- <br><td colspan="2"><input type="submit" value="Reset"></td> -->
+                <td colspan="4"><button type="submit" class="btn">Registration</button></td>
+            </tr>
+            <tr>
+                <p>Already have an account?
+                    <a href="{% url 'loginE' %}" class="login-link">Login</a>
+                </p>
+            </tr>
+        </form>
+    </center>
+</body>
+</html>
+
+
+
+
